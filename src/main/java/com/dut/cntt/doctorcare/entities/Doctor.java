@@ -1,9 +1,8 @@
 package com.dut.cntt.doctorcare.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,10 +22,11 @@ public class Doctor {
     @Column(name = "id_doctor")
     private String idDoctor;
 
-    @JoinColumn(name = "email", referencedColumnName = "email")
+    @JoinColumn(name = "user_name", referencedColumnName = "user_name")
     @OneToOne(fetch = FetchType.LAZY)
-    private Account account;
-
+    private Users users;
+    @Column(name = "avatar_url")
+    private String avatarUrl;
     @Column(name = "phone")
     private String phone;
     @Column(name = "name")

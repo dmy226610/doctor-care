@@ -2,7 +2,7 @@ package com.dut.cntt.doctorcare.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +30,7 @@ public class Schedule {
     private Patient patient;
 
     @JoinColumn(name = "id_apm", referencedColumnName = "id_apm")
-    @ManyToOne(targetEntity = Patient.class)
+    @ManyToOne(targetEntity = Appointment.class)
     @JsonBackReference
     private Appointment appointment;
 

@@ -1,8 +1,7 @@
 package com.dut.cntt.doctorcare.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,9 +21,15 @@ public class Patient {
     @Column(name = "id_patient")
     private String idPatient;
 
-    @JoinColumn(name = "email", referencedColumnName = "email")
+    @JoinColumn(name = "user_name", referencedColumnName = "user_name")
     @OneToOne(fetch = FetchType.LAZY)
-    private Account account;
+    private Users users;
+
+    @Column(name = "email",columnDefinition = "nvarchar(50)")
+    private String email;
+
+    @Column(name = "avatar_url")
+    private String avatarUrl;
 
     @Column(name = "phone")
     private String phone;
@@ -38,14 +43,8 @@ public class Patient {
     private String sex;
     @Column(name = "health_history")
     private String healthHistory;
-
-    @OneToMany(mappedBy = "patient")
-    @JsonManagedReference
-    List<Appointment> appointments;
-
-    @OneToMany(mappedBy = "patient")
-    @JsonManagedReference
-    List<Shifts> shiftss;
+    @Column(name = "blood_type")
+    private String bloodType;
 
     @OneToMany(mappedBy = "patient")
     @JsonManagedReference

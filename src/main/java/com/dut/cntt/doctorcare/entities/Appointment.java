@@ -3,7 +3,7 @@ package com.dut.cntt.doctorcare.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,14 +32,12 @@ public class Appointment {
     @JsonBackReference
     private Doctor doctor;
 
-
     private int statusAPM;
 
     @JoinColumn(name = "id_shifts",referencedColumnName = "id_shifts")
     @ManyToOne(targetEntity = Shifts.class)
     @JsonBackReference
     private Shifts shifts;
-
 
     @OneToMany(mappedBy = "appointment")
     @JsonManagedReference

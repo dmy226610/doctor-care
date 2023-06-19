@@ -8,13 +8,42 @@ import java.time.LocalDate;
 
 public class PatientDTO {
     private String idPatient;
+    private String userName;
+
+    private String password;
     private String email;
+    private String avatarUrl;
     private String phone;
     private String name;
     private LocalDate birthday;
     private String address;
     private String sex;
     private String healthHistory;
+    private String bloodType;
+
+    public PatientDTO(String idPatient, String userName, String password, String email, String avatarUrl, String phone,
+                      String name, LocalDate birthday, String address, String sex, String healthHistory, String bloodType) {
+        this.idPatient = idPatient;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
+        this.avatarUrl = avatarUrl;
+        this.phone = phone;
+        this.name = name;
+        this.birthday = birthday;
+        this.address = address;
+        this.sex = sex;
+        this.healthHistory = healthHistory;
+        this.bloodType = bloodType;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public String getIdPatient() {
         return idPatient;
@@ -83,14 +112,27 @@ public class PatientDTO {
     public PatientDTO() {
     }
 
-    public PatientDTO(String idPatient, String email, String phone, String name, LocalDate birthday, String address, String sex, String healthHistory) {
-        this.idPatient = idPatient;
-        this.email = email;
-        this.phone = phone;
-        this.name = name;
-        this.birthday = birthday;
-        this.address = address;
-        this.sex = sex;
-        this.healthHistory = healthHistory;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
     }
 }

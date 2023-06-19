@@ -1,24 +1,26 @@
 package com.dut.cntt.doctorcare.entities;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NaturalId;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+@JsonIgnoreProperties({"userRoles"})
 public class Role {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id_role")
-    private Long idRole;
+    @Column(name = "role_id")
+    private Integer roleId;
 
-    @Enumerated(EnumType.STRING)
-    @NaturalId
-    @Column(name="name_role",length = 60)
-    private AccountRole name;
+    @Column(name = "role_name", columnDefinition = "varchar(50)")
+    private String roleName;
 
+    @OneToMany(mappedBy = "role")
+    private Set<UserRole> userRoles;
 }
